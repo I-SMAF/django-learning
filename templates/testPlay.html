@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test page</title>
+</head>
+<body>
+{% for home in houses %}
+    <h1>{{ home.adress }}</h1>
+    {% for person in home.persons.have_pets %}
+        <h3>{{ person.full_name }}</h3>
+        {% for pet in person.pets.all %}
+            {% if pet in home.pets.cat %}
+                <h5>{{ pet.name }}</h5>
+                <p>{{ pet.type }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+</body>
+</html>
